@@ -1,1 +1,1 @@
-"# first_django" 
+Just training with django.
