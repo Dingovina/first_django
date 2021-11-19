@@ -41,10 +41,14 @@ class Post(models.Model):
     def like(self):
         self.rating += 1
         self.author.update_rating(3)
+        self.save()
+        self.author.save()
 
     def dislike(self):
         self.rating -= 1
         self.author.update_rating(-3)
+        self.save()
+        self.author.save()
 
     def preview(self):
         if len(self.text) > 124:
@@ -68,7 +72,7 @@ class Comment(models.Model):
     def like(self):
         self.rating += 1
         a = Author.objects.filter(user=self.comment_author)[0]
-        a.update_rating(-1)
+        a.update_rating(1)
         a.save()
         self.post.author.update_rating(1)
         self.save()
