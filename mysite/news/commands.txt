@@ -1,0 +1,7 @@
+from news.models import *
+u = User(username="user1")
+a = Author(user=u)
+p = Post(author=a, header="First", text="It is the first post")
+c = Comment(post=p, comment_author=a, text="It is my post!")
+c.like()
+p.like()
